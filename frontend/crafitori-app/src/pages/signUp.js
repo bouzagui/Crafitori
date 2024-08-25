@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/signUp.css';
 
-const SignUp = () => {
+const signUp = () => {
   return (
     <div className="image-container" alt="Background">
         <div className="signup-container">
@@ -37,4 +37,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default signUp;
