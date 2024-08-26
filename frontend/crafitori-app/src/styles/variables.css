@@ -1,0 +1,9 @@
+:root {
+    --primary-color: #007BFF;
+    --secondary-color: #FF7F50;
+    --success-color: #28A745;
+    --error-color: #fe1414;
+    --text-color: #2F3945;
+    --background-color: #f9fafb;
+    --font-family: "Poppins", sans-serif;
+  }
