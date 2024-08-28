@@ -2,20 +2,27 @@
 import React from 'react';
 import '../styles/homePage.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import Logo from '../assets/images/logoBlack.png'
 
 const HomePage = () => {
     return (
       <div className="container">
         <header className="header">
-          <div className="logo"></div>
-          <div className="search-bar">
-            <input type="text" placeholder="Search..." />
-            <button className="search-icon">
-                <i class="bi bi-search"></i>
-            </button>
+          <div className="navbar">
+            <div className="logo">
+              <img src={Logo} alt='logoBlack' className='logo-img' />
+            </div>
+            <div className="search-bar">
+              <input type="text" placeholder="Search..." />
+              <button className="search-icon">
+                  <i class="bi bi-search"></i>
+              </button>
+            </div>
+            <div className="auth-btn">
+              <button className='login-btn'>Login</button>
+              <button className='signp-btn'>Sign Up</button>
+            </div>
           </div>
-          <button className='loginBtn'>Login</button>
-          <button className='signUpBtn'>Sign Up</button>
         </header>
 
         <section className="hero">
@@ -23,13 +30,13 @@ const HomePage = () => {
             <h2>From Craftsmen To Your Hands</h2>
             <p>Shop Authentic, Handcrafted Goods Today!</p>
             <button className="cta-button">SHOP NOW</button>
-            <div className="image-overlay"></div>
+            {/* <div className="image-overlay"></div> */}
           </div>
           <div className="promo-card orange">
             <h2>Sell Your Craft To Every Corner Of Morocco</h2>
             <p>Showcase Your Work To A Nationwide Audience!</p>
             <button className="cta-button">Become A Seller</button>
-            <div className="image-overlay"></div>
+            {/* <div className="image-overlay"></div> */}
           </div>
         </section>
 

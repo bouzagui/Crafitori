@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SignUp from './pages/signUp';
 import Login from './pages/login';
 import HomePage from './pages/homePage'
+import ConfEmail from './pages/confEmail'
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/confEmail" element={<ConfEmail />} />
       </Routes>
     </Router>
   );
