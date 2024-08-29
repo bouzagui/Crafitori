@@ -6,6 +6,7 @@ import SignUp from './pages/signUp';
 import Login from './pages/login';
 import HomePage from './pages/homePage'
 import ConfEmail from './pages/confEmail'
+import ProductPage from './pages/productPage'
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/confEmail" element={<ConfEmail />} />
+        <Route path="/productPage" element={<ProductPage />} />
       </Routes>
     </Router>
   );

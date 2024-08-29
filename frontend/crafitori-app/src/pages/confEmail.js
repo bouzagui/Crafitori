@@ -5,7 +5,7 @@ import '../styles/confEmail.css'
 const confEmail = () => {
     return (
         <div>
-            <body>
+            <body className='body-container'>
                 <div className="conf-container">
                     <h2>Enter Verification Code</h2>
                     <p>We've Sent A Code To Your Email</p>

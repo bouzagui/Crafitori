@@ -8,7 +8,8 @@ const SignUp = () => {
 
 
   // State for form inputs
-  const [username, setName] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirm_password, setConfirmPassword] = useState('');
@@ -28,7 +29,8 @@ const SignUp = () => {
 
     try {
       await axios.post('http://localhost:8000/api/users/register/', {
-        username,
+        firstName,
+        lastName,
         email,
         password,
         confirm_password
@@ -59,13 +61,25 @@ const SignUp = () => {
           {error && <p className="error">{error}</p>}
           {success && <p className="success">{success}</p>}
           <form onSubmit={handleSubmit}>
-            <label htmlFor="username">Name</label>
+            {/* first name */}
+            <label htmlFor="first_name">First Name</label>
             <input
               type="text"
               id="username"
-              placeholder="Enter your name"
-              value={username}
-              onChange={(e) => setName(e.target.value)}
+              placeholder="Enter your first name"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              required
+            />
+
+          {/* last name  */}
+          <label htmlFor="last name">Last Name</label>
+            <input
+              type="text"
+              id="username"
+              placeholder="Enter your last name"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
               required
             />
 

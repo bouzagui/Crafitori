@@ -5,8 +5,6 @@ import '../styles/login.css';
 
 const Login = () => {
   const navigate = useNavigate(); // Initialize useNavigate
-
-
   // State for form inputs
   const [username, setName] = useState('');
   const [password, setPassword] = useState('');
@@ -28,9 +26,9 @@ const Login = () => {
         // Extract JWT from the response
         const { token } = response.data;
 
-        if (token) {
-          // Store the token in localStorage or sessionStorage
-          localStorage.setItem('authToken', token);
+    if (token) {
+      // Store the token in localStorage or sessionStorage
+      localStorage.setItem('authToken', token);
 
       // Handle successful registration
       setSuccess('Login successful!');
@@ -39,8 +37,8 @@ const Login = () => {
       // Redirect to home page after successful registration
       navigate('/home');
     } else {
-        setError('Login failed. No token received.');
-        setSuccess('');
+      setError('Login failed. No token received.');
+      setSuccess('');
     }
 
     } catch (err) {
