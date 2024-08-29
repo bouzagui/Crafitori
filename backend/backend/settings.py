@@ -155,3 +155,10 @@ EMAIL_USE_TLS = True  # Optional (STARTTLS on all ports)
 
 # Default sender email
 DEFAULT_FROM_EMAIL = 'crafitori@gmail.com'
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "https://www.crafitori.com",
+    "https://crafitori.com",
+]
+
