@@ -65,7 +65,7 @@ class LoginSerializer(serializers.ModelSerializer):
             'email': user.email,
             'full_name': user.fullname,
             'access_token': str(user_tokens.get('access')),
-            'refresh_token': (user_tokens.get('refresh'))
+            'refresh_token': str(user_tokens.get('refresh'))
         }
 
 class PasswordResetRequestSerializer(serializers.Serializer):

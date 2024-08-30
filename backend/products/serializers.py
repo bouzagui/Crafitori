@@ -16,3 +16,13 @@ class ProductSerializer(serializers.ModelSerializer):
 
     def get_my_discount(self, obj):
         return  obj.get_discount()
+
+class UpdateProductSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+        fields = ['title', 'description', 'price', 'id']
+        extra_kwargs = {
+            'title': {'required': False},
+            'description': {'required': False},
+            'price': {'required': False}
+        }

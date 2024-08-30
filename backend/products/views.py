@@ -1,6 +1,6 @@
 from rest_framework import generics, mixins
 from .models import Product
-from .serializers import ProductSerializer
+from .serializers import ProductSerializer, UpdateProductSerializer
 from django.shortcuts import get_object_or_404
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -48,7 +48,7 @@ class ProductDetailAPIView(generics.RetrieveAPIView):
 
 class ProductUpdateAPIView(generics.UpdateAPIView):
     queryset = Product.objects.all()
-    serializer_class = ProductSerializer
+    serializer_class = UpdateProductSerializer
     # lookup_field = "pk"
 
 class ProductDestroyAPIView(generics.DestroyAPIView):
