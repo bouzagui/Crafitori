@@ -32,7 +32,7 @@ def resend_email(email):
     otp_code = generateOtp()
     user = User.objects.get(email=email)
     site = "Crafitori"
-    from_email = "onboarding@resend.dev"
+    from_email = "noreply@crafitori.com"
 
 
     message = f"""
