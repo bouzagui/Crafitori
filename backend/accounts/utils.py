@@ -31,10 +31,9 @@ def resend_email(email):
     subject = "Crafitori Email Verification"
     otp_code = generateOtp()
     user = User.objects.get(email=email)
+    OnetimePassword.objects.create(user=user, code=otp_code)
     site = "Crafitori"
     from_email = "noreply@crafitori.com"
-
-
     message = f"""
     <!DOCTYPE html>
     <html>
