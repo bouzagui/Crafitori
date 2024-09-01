@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'accounts',
     'products',
+    'categories',
 ]
 
 REST_FRAMEWORK={
@@ -145,7 +146,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
+""" OLD SETUP
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
 EMAIL_PORT = 2525  # You can also use 25, 465, or 587
@@ -155,6 +156,13 @@ EMAIL_USE_TLS = True  # Optional (STARTTLS on all ports)
 
 # Default sender email
 DEFAULT_FROM_EMAIL = 'crafitori@gmail.com'
+"""
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+RESEND_SMTP_PORT = 587
+RESEND_SMTP_USERNAME = 'resend'
+RESEND_SMTP_HOST = 'smtp.resend.com'
+
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",

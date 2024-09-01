@@ -4,7 +4,7 @@ from .serializer import PasswordResetRequestSerializer, UserRegisterSerializer, 
 
 from rest_framework.response import Response
 from rest_framework import status
-from .utils import send_code_to_user
+from .utils import send_code_to_user, resend_email
 from .models import OnetimePassword
 from rest_framework.permissions import IsAuthenticated
 from django.utils.http import urlsafe_base64_decode
@@ -22,7 +22,7 @@ class RegisterUserView(GenericAPIView):
             serializer.save()
             user = serializer.data
             #use celery in prod
-            send_code_to_user(user['email'])
+            resend_email(user['email'])
             return Response({'status': 'OK', 'user': user}, status.HTTP_201_CREATED)
         return Response(serializer.errors, status.HTTP_400_BAD_REQUEST)
 

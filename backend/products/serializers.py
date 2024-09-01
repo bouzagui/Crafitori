@@ -1,21 +1,23 @@
 from products.models import Product
 from rest_framework import serializers
+from categories.serializers import CategorySerializer
+from categories.models import Category
 
 
 class ProductSerializer(serializers.ModelSerializer):
-    my_discount = serializers.SerializerMethodField(read_only=True)
+    category_id = serializers.IntegerField(write_only=True)
+    category = CategorySerializer(read_only=True)
+
     class Meta:
         model = Product
-        fields = ['title',
-                  'description',
-                  'price',
-                  'sale_price',
-                  'my_discount',
-                  'id']
+        fields = ['id', 'title', 'description', 'price', 'category_id', 'category']
 
+    def create(self, validated_data):
+        category_id = validated_data.pop('category_id')
+        category = Category.objects.get(id=category_id)
+        product = Product.objects.create(category=category, **validated_data)
+        return product
 
-    def get_my_discount(self, obj):
-        return  obj.get_discount()
 
 class UpdateProductSerializer(serializers.ModelSerializer):
     class Meta:
@@ -24,5 +26,6 @@ class UpdateProductSerializer(serializers.ModelSerializer):
         extra_kwargs = {
             'title': {'required': False},
             'description': {'required': False},
-            'price': {'required': False}
+            'price': {'required': False},
+            'category': {'required': False}
         }

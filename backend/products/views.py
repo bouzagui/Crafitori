@@ -4,6 +4,7 @@ from .serializers import ProductSerializer, UpdateProductSerializer
 from django.shortcuts import get_object_or_404
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from django.db.models import Q
 
 
 class ProductMixing(generics.GenericAPIView,
@@ -31,6 +32,24 @@ class ProductMixing(generics.GenericAPIView,
     def delete(self, request, *args, **kwargs):
         return self.destroy(request, *args, **kwargs)
 
+class ProductSearchView(generics.ListAPIView):
+    serializer_class = ProductSerializer
+
+    def get_queryset(self):
+        query = self.request.query_params.get('q', None)
+        if query:
+            return Product.objects.filter(
+                Q(title__icontains=query) |
+                Q(description__icontains=query) |
+                Q(category__name__icontains=query) 
+            )
+        return Product.objects.none()
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
+
 class ProductListCreateAPIView(generics.ListCreateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
@@ -38,6 +57,10 @@ class ProductListCreateAPIView(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         #email/notification the user that product has been created
         return super().perform_create(serializer)
+
+class ProductCreateView(generics.CreateAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
 
 
 class ProductDetailAPIView(generics.RetrieveAPIView):
@@ -59,24 +82,6 @@ class ProductDestroyAPIView(generics.DestroyAPIView):
         #do something with the instance
         return super().perform_destroy(instance)
 
-@api_view(["GET", "POST"])
-def product_create_retreive_list(request, pk=None, *args, **kwargs):
-    method = request.method
 
-    if method == "GET":
-        if pk is not None:
-            obj = get_object_or_404(Product, pk=pk)
-            data = ProductSerializer(obj, many=False).data
-            return Response(data)
-        qs = Product.objects.all()
-        data = ProductSerializer(qs, many=True).data
-        return Response(data)
-
-    if method == "POST":
-        serializer = ProductSerializer(data=request.data)
-        if serializer.is_valid(raise_exception=True):
-            serializer.save()
-            return Response(serializer.data)
-        return Response({"invalid data": "you sure you sent title and price?"}, status=400)
 
 
