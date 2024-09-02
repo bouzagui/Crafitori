@@ -91,7 +91,7 @@ def resend_email(email):
         host=settings.RESEND_SMTP_HOST,
         port=settings.RESEND_SMTP_PORT,
         username=settings.RESEND_SMTP_USERNAME,
-        password="re_2TshBX6C_JphDiu64A3ZVx4P2zmiAAy6A",
+        password=getenv("RESEND_API_KEY"),
         use_tls=True,
     ) as connection:
         email_message = EmailMessage(
