@@ -2,15 +2,18 @@ from products.models import Product
 from rest_framework import serializers
 from categories.serializers import CategorySerializer
 from categories.models import Category
+from accounts.serializer import UserSerializer
 
 
 class ProductSerializer(serializers.ModelSerializer):
     category_id = serializers.IntegerField(write_only=True)
     category = CategorySerializer(read_only=True)
+    owner = UserSerializer(read_only=True)
+    owner_name = serializers.CharField(source='owner.fullname', read_only=True)
 
     class Meta:
         model = Product
-        fields = ['id', 'title', 'description', 'price', 'category_id', 'category']
+        fields = ['id', 'title', 'description', 'price', 'category_id', 'category', 'owner', 'owner_name']
 
     def create(self, validated_data):
         category_id = validated_data.pop('category_id')

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework.generics import GenericAPIView
-from .serializer import PasswordResetRequestSerializer, UserRegisterSerializer, LoginSerializer, SetNewPasswordSerializer, LogoutUserSerializer
+from .serializer import PasswordResetRequestSerializer,UserRegisterSerializer, LoginSerializer, SetNewPasswordSerializer, LogoutUserSerializer, ProfilePrivateSerializer
 
 from rest_framework.response import Response
 from rest_framework import status
@@ -10,6 +10,7 @@ from rest_framework.permissions import IsAuthenticated
 from django.utils.http import urlsafe_base64_decode
 from django.utils.encoding import smart_str, DjangoUnicodeDecodeError
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
+from rest_framework import generics, permissions
 from .models import User
 
 class RegisterUserView(GenericAPIView):
@@ -105,3 +106,11 @@ class LogoutApiView(GenericAPIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class PrivateProfileView(generics.RetrieveUpdateAPIView):
+    serializer_class = ProfilePrivateSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_object(self):
+        return self.request.user.profile

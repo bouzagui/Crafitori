@@ -11,6 +11,12 @@ from .utils import send_normal_email
 from rest_framework_simplejwt.tokens import RefreshToken, TokenError
 from .models import Profile
 
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'email', 'first_name', 'last_name', 'fullname']
+
 class UserRegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(max_length=68, min_length=8, write_only=True)
     password2 = serializers.CharField(max_length=68, min_length=8, write_only=True)
@@ -144,3 +150,41 @@ class LogoutUserSerializer(serializers.Serializer):
             token.blacklist()
         except TokenError:
             return self.fail('bad_token')
+
+
+class UserPrivateSerializer(serializers.ModelSerializer):
+    date_joined = serializers.SerializerMethodField()
+    last_login = serializers.SerializerMethodField()
+
+    class Meta:
+        model = User
+        fields = ['id', 'email', 'first_name', 'last_name', 'fullname', 'date_joined', 'last_login']
+        read_only_fields = ['id', 'email', 'date_joined', 'last_login']
+
+    def get_date_joined(self, obj):
+        return obj.date_joined.strftime('%Y-%m-%d %H:%M:%S')
+
+    def get_last_login(self, obj):
+        return obj.last_login.strftime('%Y-%m-%d %H:%M:%S')
+
+
+class ProfilePrivateSerializer(serializers.ModelSerializer):
+    user = UserPrivateSerializer()
+
+    class Meta:
+        model = Profile
+        fields = ['user', 'bio', 'image']
+
+    def update(self, instance, validated_data):
+        user_data = validated_data.pop('user', {})
+        # Update User model fields
+        for attr, value in user_data.items():
+            setattr(instance.user, attr, value)
+        instance.user.save()
+
+        # Update Profile model fields
+        for attr, value in validated_data.items():
+            setattr(instance, attr, value)
+        instance.save()
+
+        return instance
