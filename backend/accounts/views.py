@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework.generics import GenericAPIView
-from .serializer import PasswordResetRequestSerializer,UserRegisterSerializer, LoginSerializer, SetNewPasswordSerializer, LogoutUserSerializer, ProfilePrivateSerializer
+from .serializer import *
 
 from rest_framework.response import Response
 from rest_framework import status
@@ -11,7 +11,7 @@ from django.utils.http import urlsafe_base64_decode
 from django.utils.encoding import smart_str, DjangoUnicodeDecodeError
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from rest_framework import generics, permissions
-from .models import User
+from .models import User, Profile
 
 class RegisterUserView(GenericAPIView):
     serializer_class = UserRegisterSerializer
@@ -114,3 +114,10 @@ class PrivateProfileView(generics.RetrieveUpdateAPIView):
 
     def get_object(self):
         return self.request.user.profile
+
+class PublicProfileView(generics.RetrieveAPIView):
+    queryset = Profile.objects.all()
+    serializer_class = ProfilePublicSerializer
+    lookup_field = 'user__id'
+
+
