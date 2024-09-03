@@ -10,12 +10,35 @@ from django.urls import reverse
 from .utils import send_normal_email
 from rest_framework_simplejwt.tokens import RefreshToken, TokenError
 from .models import Profile
+from products.models import Product
 
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['id', 'email', 'first_name', 'last_name', 'fullname']
+
+
+class ProfileProductSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+        fields = ['id', 'title', 'description', 'price', 'category']
+
+
+class PublicUserProfileSerializer(serializers.ModelSerializer):
+    products = ProfileProductSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = User
+        fields = ['id', 'email', 'first_name', 'last_name', 'fullname', 'products']
+
+class ProfilePublicSerializer(serializers.ModelSerializer):
+    user = PublicUserProfileSerializer(read_only=True)
+
+    class Meta:
+        model = Profile
+        fields = ['user', 'bio', 'image']
+
 
 class UserRegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(max_length=68, min_length=8, write_only=True)
@@ -188,3 +211,8 @@ class ProfilePrivateSerializer(serializers.ModelSerializer):
         instance.save()
 
         return instance
+
+
+
+
+

@@ -9,11 +9,18 @@ class ProductSerializer(serializers.ModelSerializer):
     category_id = serializers.IntegerField(write_only=True)
     category = CategorySerializer(read_only=True)
     owner = UserSerializer(read_only=True)
-    owner_name = serializers.CharField(source='owner.fullname', read_only=True)
+    # owner_name = serializers.CharField(source='owner.fullname', read_only=True)
+    owner_profile_url = serializers.HyperlinkedRelatedField(
+        source='owner',
+        view_name='profiles:public-profile-detail',
+        read_only=True,
+        lookup_field='id',
+        lookup_url_kwarg='user__id'
+    )
 
     class Meta:
         model = Product
-        fields = ['id', 'title', 'description', 'price', 'category_id', 'category', 'owner', 'owner_name']
+        fields = ['id', 'title', 'description', 'price', 'category_id', 'category', 'owner', 'owner_profile_url']
 
     def create(self, validated_data):
         category_id = validated_data.pop('category_id')

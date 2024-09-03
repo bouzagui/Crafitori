@@ -16,10 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from accounts.views import PrivateProfileView, PublicProfileView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/auth/', include('accounts.urls')),
     path('api/products/', include("products.urls")),
-    path('api/categories/', include("categories.urls"))
+    path('api/categories/', include("categories.urls")),
+    path('api/profile/', include('profiles.urls', namespace='profiles')),
 ]

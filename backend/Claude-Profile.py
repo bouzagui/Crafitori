@@ -12,45 +12,44 @@ class UserSerializer(serializers.ModelSerializer):
 
 class ProfilePublicSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
-    products = serilizers.MehtodField()
 
     class Meta:
         model = Profile
         fields = ['user', 'bio', 'image']
 
-class UserPrivateSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ['id', 'email', 'first_name', 'last_name', 'fullname', 'date_joined', 'last_login']
-        read_only_fields = ['id', 'email', 'date_joined', 'last_login']
+# class UserPrivateSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = User
+#         fields = ['id', 'email', 'first_name', 'last_name', 'fullname', 'date_joined', 'last_login']
+#         read_only_fields = ['id', 'email', 'date_joined', 'last_login']
 
-class ProfilePrivateSerializer(serializers.ModelSerializer):
-    user = UserPrivateSerializer()
+# class ProfilePrivateSerializer(serializers.ModelSerializer):
+#     user = UserPrivateSerializer()
 
-    class Meta:
-        model = Profile
-        fields = ['user', 'bio', 'image']
+#     class Meta:
+#         model = Profile
+#         fields = ['user', 'bio', 'image']
 
-    def update(self, instance, validated_data):
-        user_data = validated_data.pop('user', {})
-        # Update User model fields
-        for attr, value in user_data.items():
-            setattr(instance.user, attr, value)
-        instance.user.save()
+#     def update(self, instance, validated_data):
+#         user_data = validated_data.pop('user', {})
+#         # Update User model fields
+#         for attr, value in user_data.items():
+#             setattr(instance.user, attr, value)
+#         instance.user.save()
 
-        # Update Profile model fields
-        for attr, value in validated_data.items():
-            setattr(instance, attr, value)
-        instance.save()
+#         # Update Profile model fields
+#         for attr, value in validated_data.items():
+#             setattr(instance, attr, value)
+#         instance.save()
 
-        return instance
+#         return instance
 
 class ProductSerializer(serializers.ModelSerializer):
     owner_profile_url = serializers.HyperlinkedRelatedField(
-        source='owner',
-        view_name='public-profile-detail',
-        read_only=True,
-        lookup_field='pk'
+    source='owner',
+    view_name='public-profile-detail',
+    read_only=True,
+    lookup_field='pk'
     )
 
     class Meta:

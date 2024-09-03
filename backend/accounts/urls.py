@@ -10,7 +10,6 @@ urlpatterns = [
     path('password-reset-confirm/<uidb64>/<token>/', views.PasswordResetConfirm.as_view(), name='reset-password-confirm'),
     path('set-new-password/', views.SetNewPasswordView.as_view(), name='set-new-password'),
     path('logout/', views.LogoutApiView.as_view(), name='logout'),
-    path('my-profile/', views.PrivateProfileView.as_view(), name='private-profile'),
-
+    # path('my-profile/', views.PrivateProfileView.as_view(), name='private-profile'),
+    # path('profile/<int:user__id>/', views.PublicProfileView.as_view(), name='public-profile-detail'),
 ]
-
