@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 from datetime import timedelta
+import os
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -167,7 +168,9 @@ RESEND_SMTP_HOST = 'smtp.resend.com'
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
-    "https://www.crafitori.com",
-    "https://crafitori.com",
+    "http://www.crafitori.com",
+    "http://crafitori.com",
 ]
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
