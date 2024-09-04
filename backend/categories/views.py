@@ -41,7 +41,16 @@ class ProductBySubcategoryView(generics.ListAPIView):
 
 class SubcategoryByCategoryView(generics.RetrieveAPIView):
     serializer_class = CategorySerializer
+
+    def get_queryset(self):
+        parent_id = self.kwargs['parent_id']
+        return Category.objects.filter(parent=parent_id)
+
+
+class SubcategoryByCategoryView(generics.ListAPIView):
+    serializer_class = CategorySerializer
     lookup_field = "parent_id"
+    
     def get_queryset(self):
         parent_id = self.kwargs['parent_id']
         return Category.objects.filter(parent=parent_id)
