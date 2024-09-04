@@ -210,6 +210,10 @@ class ProfilePrivateSerializer(serializers.ModelSerializer):
             setattr(instance, attr, value)
         instance.save()
 
+        if 'image' in validated_data:
+            instance.image = validated_data['image']
+            
+        instance.save()
         return instance
 
 
