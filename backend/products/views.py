@@ -6,6 +6,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.db.models import Q
 from rest_framework.permissions import AllowAny, IsAuthenticated
+from .permissions import IsSeller
 
 
 
@@ -63,7 +64,7 @@ class ProductListCreateAPIView(generics.ListCreateAPIView):
     def get_permissions(self):
         if self.request.method == 'POST':
             # Require authentication for creating a product
-            return [IsAuthenticated()]
+            return [IsAuthenticated(),  IsSeller()]
         # Allow anyone to list products
         return [AllowAny()]
 
