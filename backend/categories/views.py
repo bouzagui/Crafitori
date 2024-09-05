@@ -6,18 +6,19 @@ from .serializers import CategorySerializer
 from products.serializers import ProductSerializer
 from products.models import Product
 from rest_framework.permissions import IsAdminUser
+from rest_framework.parsers import MultiPartParser, FormParser
 
 
 class CategoryListCreateView(generics.ListCreateAPIView):
     queryset = Category.objects.filter(parent__isnull=True)
     serializer_class = CategorySerializer
+    parser_classes = (MultiPartParser, FormParser)
 
 
 class DeleteCategoryView(generics.DestroyAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
     permission_classes = [IsAdminUser]
-
 
 
 class SubcategoryCreateView(generics.CreateAPIView):
