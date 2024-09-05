@@ -12,6 +12,8 @@ from django.utils.encoding import smart_str, DjangoUnicodeDecodeError
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from rest_framework import generics, permissions
 from .models import User, Profile
+from rest_framework.parsers import MultiPartParser, FormParser
+
 
 class RegisterUserView(GenericAPIView):
     serializer_class = UserRegisterSerializer
@@ -111,6 +113,7 @@ class LogoutApiView(GenericAPIView):
 class PrivateProfileView(generics.RetrieveUpdateAPIView):
     serializer_class = ProfilePrivateSerializer
     permission_classes = [IsAuthenticated]
+    parser_classes = (MultiPartParser, FormParser)
 
     def get_object(self):
         return self.request.user.profile
