@@ -1,35 +1,50 @@
 import React from 'react'
+import { FaStar } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
 
 const ProductCard = ({ data }) => {
   const navigate = useNavigate();
 
-  const handelBuyNow = (id) => {
-    navigate(`/product/${id}`);
-  }
 
+  const handleBuyNow = (id) => {
+    navigate(`/product/${id}`);
+  };
 
 
   return (
     <div className='mb-10'>
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-6 place-items-center">
+        <div className="grid grid-cols-1 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-5 gap-6 place-items-center p-10 rounded-2xl bg-white">
           {data.map((item) => (
-            <div key={item.id} className="group border rounded-lg overflow-hidden shadow-md">
-              <div className="relative">
-                <img src={item.img} alt={item.name} className="h-[180px] w-[260px] object-cover rounded-md"/>
+            <div key={item.id} className=" bg-white p-4 shadow rounded relative border transform transition-all duration-300 hover:scale-110">
+              <div className="group">
+                <img src={item.img} alt={item.name} className="w-48 h-48 object-contain mb-4"/>
 
-                <div className='hidden group-hover:flex absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-full text-center groub-hover:backdrop-blur-sm justify-center items-center duration-200'>
-                    <button onClick={handelBuyNow} className='bg-secondary text-3xl font-Poppins font-medium  text-white px-7 py-1 rounded-full'>Buy Now</button>
+                <div className='hidden group-hover:flex absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 text-center groub-hover:backdrop-blur-sm justify-center items-center duration-200'>
+                  <button onClick={() => handleBuyNow(item.id)} className='bg-secondary text-3xl font-Poppins font-medium  text-white px-7 py-1 rounded-full'>Details</button>
                 </div>
               </div>
-              <div className="leading-7">
-                <h3 className="font-semibold text-lg text-text flex justify-start pl-2 pt-2">{item.name || 'Product Name'}</h3>
-                <div className='flex gap-2 '>
-                  <p className="font-semibold text-lg text-text flex justify-start pl-2 pt-2">{item.price}</p>
-                  <h3 className="font-light text-m text-primaryBlackHover flex justify-start pl-2 pt-2 items-center line-through">{item.oldprice}</h3>
+        
+                <h3 className='text-text text-lg font-semibold font-Poppins'>{item.name}</h3>
+                <p>{item.price}</p>
+                
+                <div className='flex items-center mt-2'>
+                  <FaStar className='text-yellow-500'/>
+                  <FaStar className='text-yellow-500'/>
+                  <FaStar className='text-yellow-500'/>
+                  <FaStar className='text-yellow-500'/>
+                  <FaStar className='text-yellow-500'/>
                 </div>
-              </div>
+
+                <div className='absolute bottom-4 right-2 flex items-center justify-center w-8 h-8 bg-secondaryBlack group text-white text-sm rounded-full hover:bg-secondary hover:w-32 transition-all'>
+              <span className='group-hover:hidden'>+</span>
+              <button onClick={() => handleBuyNow(item.id)}
+              className='hidden group-hover:block'>
+                 Add to Cart'
+              </button>
+            </div>
+               
+              
             </div>
           ))}
         </div>
@@ -37,29 +52,4 @@ const ProductCard = ({ data }) => {
   )
 }
 
-export default ProductCard
-
-
-
-// import React from 'react'
-
-// const ProductCard = ({data}) => {
-//   return (
-//     <div>
-//         <div>
-//             {
-//                 data.map((data) => {
-//                     <div>
-//                         <div className='h-12 flex'>
-//                             <img src={data.img} alt={data.name} />
-//                         </div>
-//                     </div>
-                    
-//                 })
-//             }
-//         </div>
-//     </div>
-//   )
-// }
-
-// export default ProductCard
+export default ProductCard;
