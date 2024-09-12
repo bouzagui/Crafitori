@@ -1,82 +1,119 @@
-// pages/ProductPage.js
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-// import '../styles/productPage.css';
-import logo from '../assets/images/logoBlack.png';
+import React, { useState, useEffect, useContext } from 'react';
+import { useParams } from 'react-router-dom';
+import axiosInstance from '../components/axios/axiosInstance'; // Adjust the path accordingly
+import Navbar from '../components/navBar/Navbar';
+import { CartContext } from '../context/CartContext';
+import {handleAddToCart} from '../context/handleAddToCart';
+import Footer from '../components/footer/Footer';
 
-const ProductPage = () => {
-  const [product, setProduct] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        //fetching data for a product with ID 
-        const response = await axios.get('https://api.example.com/products/1');
-        setProduct(response.data);
-        setLoading(false);
-      } catch (err) {
-        setError('Failed to fetch product data. Please try again later.');
-        setLoading(false);
-      }
-    };
 
-    fetchProduct();
-  }, []);
 
-  if (loading) return <div className="loading">Loading...</div>;
-  if (error) return <div className="error">{error}</div>;
-  if (!product) return <div className="error">No product data available.</div>;
+const ProductDetailPage = () => {
+    const { productId } = useParams();
+    const [product, setProduct] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [activeImg, setActiveImage] = useState(''); // State for active image
+    const [amount, setAmount] = useState(1);
+    const { addToCart } = useContext(CartContext);
+    const [clickedProductId, setClickedProductId] = useState(null);
 
-  return (
-    <div className="product-page">
-      <header className='product-header'>
-        <nav className='product-nav'>
-          <img src={logo} alt="Logo" className="logo" />
-          <div className="search-bar">
-            <input type="text" placeholder="Search..." />
-            <button>Search</button>
-          </div>
-          <div className="nav-right">
-            <button className="logout-btn">Logout</button>
-            <span className="cart-icon" role="img" aria-label="Shopping Cart">🛒</span>
-          </div>
-        </nav>
-      </header>
 
-      <main>
-        <section className="product-details">
-          <div className="product-images">
-            {product.images.map((img, index) => (
-              <img key={index} src={img} alt={`${product.name} view ${index + 1}`} />
-            ))}
-          </div>
-          <div className="product-info">
-            <h1>{product.name}</h1>
-            <p className="price">${product.price.toFixed(2)}</p>
-            <p className="description">{product.description}</p>
-            <button className="add-to-cart">Add to Cart</button>
-          </div>
-        </section>
 
-        <section className="reviews">
-          <h2>Customer Reviews</h2>
-          {product.reviews.map(review => (
-            <div key={review.id} className="review">
-              <p className="review-user">{review.user}</p>
-              <p className="review-rating">Rating: {review.rating}/5</p>
-              <p className="review-comment">{review.comment}</p>
+    useEffect(() => {
+        axiosInstance.get(`/products/${productId}/`)
+            .then(response => {
+                const productData = response.data;
+
+                // Set the first image from the API as the active image if available
+                if (productData.images && productData.images.length > 0) {
+                    setActiveImage(productData.images[0].image); // Use .image to get the URL
+                }
+
+                setProduct(productData); // Set product data after handling images
+                setLoading(false);
+            })
+            .catch(error => {
+                console.error('Error fetching product:', error);
+                setLoading(false);
+            });
+    }, [productId]);
+
+    // Log only if product is available
+    console.log(product?.images);
+
+    // Ensure product and product.images are defined
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
+    if (!product) {
+        return <div>Product not found</div>;
+    }
+
+    // Handle case where images array might not be present
+    const productImages = product?.images || [];
+
+
+
+
+    const handleAddToCartClick = (item) => {
+        setClickedProductId(item.id); // Disable the button for this product
+        handleAddToCart(item, amount, addToCart); // Call the cart function
+        setTimeout(() => setClickedProductId(null), 1000); // Re-enable after 1 second
+      };
+
+
+    return (
+        <div>
+          <Navbar />
+          <div className='max-w-7xl md:h-full lg:h-screen mx-auto mt-10 p-10 gap- bg-white shadow-md rounded-lg'>
+            <div className='flex items-start justify-start flex-col lg:flex-row gap-16 '>
+                <div className='flex flex-col gap-6 lg:w-1/3'>
+                    {activeImg && (
+                        <img src={activeImg} alt="Product Image" className='w-svw h-svw aspect-square object-cover rounded-xl'/>
+                    )}
+                    <div className='flex flex-row gap-8 h-24 aspect-square'>
+                        {productImages.length > 0 ? (
+                            productImages.map((imageObj, index) => (
+                                <img 
+                                    key={index} 
+                                    src={imageObj.image} 
+                                    alt={`Product image ${index + 1}`} 
+                                    className='w-36 h-36 rounded-md cursor-pointer p-1 mb-10' 
+                                    onClick={() => setActiveImage(imageObj.image)} 
+                                />
+                            ))
+                        ) : (
+                            <p>No images available</p> // Fallback in case no images are found
+                        )}
+                    </div>
+                </div>
+                {/* ABOUT */}
+                <div className='flex flex-col gap-4 lg:w-2/4'>
+                    <div>
+                        <span className=' text-violet-600 font-semibold'>Special offer</span>
+                        <h1 className='text-3xl font-bold'>{product.title}</h1>
+                    </div>
+                    <p className='text-gray-700'>
+                    {product.description}</p>
+                    <h6 className='text-2xl font-semibold'>${product.price}</h6>
+                    <div className='flex flex-row items-center gap-12'>
+                        <div className='flex flex-row items-center'>
+                            <button onClick={() => setAmount((prev) => prev - 1)} className='bg-gray-200 py-2 px-5 rounded-lg text-violet-800 text-3xl' >-</button>
+                            <span className='py-4 px-6 rounded-lg'>{amount}</span>
+                            <button onClick={() => setAmount((prev) => prev + 1)} className='bg-gray-200 py-2 px-4 rounded-lg text-violet-800 text-3xl' >+</button>
+                        </div>
+                        <button onClick={() => handleAddToCartClick(product)} className='bg-secondary text-white font-semibold py-3 px-16 rounded-xl h-full'>
+                        {clickedProductId === product.id ? 'Adding...' : 'Add to Cart'}
+                        </button>
+                    </div>
+                </div>
             </div>
-          ))}
-        </section>
-      </main>
-
-      <footer>
-        <p>&copy; {new Date().getFullYear()} Crafitori. All rights reserved.</p>
-      </footer>
-    </div>
-  );
+        </div>
+        <Footer />
+        </div>
+    );
 };
 
-export default ProductPage;
+export default ProductDetailPage;
