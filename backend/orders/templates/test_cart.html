@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PayPal Checkout - Token Auth Test</title>
+</head>
+<body>
+    <h1>PayPal Checkout - Token Test</h1>
+    <button id="testCheckout">Send Cart Data</button>
+    <script>
+        document.getElementById('testCheckout').addEventListener('click', function() {
+            // Cart data example
+            const cart = [
+                { product_id: 5, quantity: 1 },
+                { product_id: 3, quantity: 1 }
+            ];
+
+            // Send the cart data to your Django backend to create the Order object
+            fetch('http://localhost:8000/api/checkout/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU4MDUzNjY4LCJpYXQiOjE3MjY1MTc2NjgsImp0aSI6ImQ1NTYxMDllMTZmMjQ2ZGZiZGE0ZDU2M2U2NzFkZTBmIiwidXNlcl9pZCI6MX0.rIFUMZm-46XGka1cIC759fo8xD_2jU8uo-TnusFmfK8',
+                    'X-CSRFToken': '{{ csrf_token }}',
+                },
+                body: JSON.stringify({ cart: cart })
+            })
+            .then(function(res) {
+                return res.json();
+            })
+            .then(function(data) {
+                console.log("Order ID:", data.order_id);
+                if (data.order_id) {
+                    alert('Order created successfully! Order ID: ' + data.order_id);
+                } else {
+                    alert('Failed to create order.');
+                }
+            })
+            .catch(function(error) {
+                console.error('Error:', error);
+                alert('An error occurred: ' + error.message);
+            });
+        });
+    </script>
+</body>
+</html>
