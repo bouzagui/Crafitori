@@ -1,0 +1,194 @@
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PayPal Checkout</title>
+    <script src="https://www.paypal.com/sdk/js?client-id=AartfsAJihC78lPm8_kFqloOD0PwsFiiHQL2YmCYwMOAgaKc268HkeQiX8DyGQOGEalVATpZwBUSLWex"></script>
+</head>
+<body>
+    <h1>PayPal Checkout</h1>
+    <div id="paypal-button-container"></div>
+
+    <script>
+        const orderData = {
+            order_id: undefined,  // Your database order ID
+            paypal_order_id: '',  // PayPal's order ID
+        };
+        paypal.Buttons({
+            createOrder: function(data, actions) {
+                // Dynamically retrieve cart data (replace this with actual dynamic logic)
+                const cart = [
+                    { product_id: 5, quantity: 1 },
+                    { product_id: 3, quantity: 1 }
+                ];
+
+                // 1. Send the cart data to your Django backend to create the Order object
+                return fetch('http://localhost:8000/api/checkout/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}',
+                        'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU4MDUzNjY4LCJpYXQiOjE3MjY1MTc2NjgsImp0aSI6ImQ1NTYxMDllMTZmMjQ2ZGZiZGE0ZDU2M2U2NzFkZTBmIiwidXNlcl9pZCI6MX0.rIFUMZm-46XGka1cIC759fo8xD_2jU8uo-TnusFmfK8',
+                    },
+                    body: JSON.stringify({ cart: cart })  // Send cart data correctly as JSON
+                })
+                .then(function(res) {
+                    return res.json();
+                })
+                .then(function(data) {
+                    if (data.error) {
+                        alert('Error creating order: ' + data.error);
+                        throw new Error(data.error);
+                    }
+
+                    if (!data.order_id) {
+                        alert('No order ID returned');
+                        throw new Error('Order ID is undefined');
+                    }
+                    orderData.order_id = data.order_id
+
+                    // 2. Now create a PayPal order using the order_id returned from the backend
+                    return fetch(`http://localhost:8000/api/checkout/create-paypal-order/?order_id=${data.order_id}`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': '{{ csrf_token }}',
+                        }
+                    });
+                })
+                .then(function(res) {
+                    return res.json();
+                })
+                .then(function(data) {
+                    if (data.error) {
+                        alert('Error creating PayPal order: ' + data.error);
+                        throw new Error(data.error);
+                    }
+                    orderData.paypal_order_id =paypal_order_id
+                    return data.paypal_order_id;  // Return the PayPal order ID to initiate the payment
+                });
+            },
+
+            onApprove: function(data, actions) { data.
+                // Capture the PayPal order using the PayPal order ID
+                return fetch('http://localhost:8000/api/checkout/capture-paypal-order/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}',
+                    },
+                    body: JSON.stringify({ orderData: orderData })
+                })
+                .then(function(res) {
+                    return res.json();
+                })
+                .then(function(details) {
+                    if (details.status === "success") {
+                        alert('Transaction completed by ' + details.details.payer.name.given_name);
+                    } else {
+                        alert('Transaction failed: ' + details.message);
+                    }
+                });
+            }
+        }).render('#paypal-button-container');
+    </script>
+</body>
+</html> {% endcomment %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PayPal Checkout</title>
+    <script src="https://www.paypal.com/sdk/js?client-id=AartfsAJihC78lPm8_kFqloOD0PwsFiiHQL2YmCYwMOAgaKc268HkeQiX8DyGQOGEalVATpZwBUSLWex"></script>
+</head>
+<body>
+    <h1>PayPal Checkout</h1>
+    <div id="paypal-button-container"></div>
+
+    <script>
+        const orderData = {
+            order_id: undefined,  // database order ID
+            paypal_order_id: '',  // PayPal's order ID
+        };
+        paypal.Buttons({
+            createOrder: function(data, actions) {
+                // Dynamically retrieve cart data (replace this with actual dynamic logic)
+                const cart = [
+                    { product_id: 6, quantity: 1 },
+                ];
+
+                // 1. Send the cart data to your Django backend to create the Order object
+                return fetch('http://localhost:8000/api/checkout/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}',
+                        'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU4MDUzNjY4LCJpYXQiOjE3MjY1MTc2NjgsImp0aSI6ImQ1NTYxMDllMTZmMjQ2ZGZiZGE0ZDU2M2U2NzFkZTBmIiwidXNlcl9pZCI6MX0.rIFUMZm-46XGka1cIC759fo8xD_2jU8uo-TnusFmfK8',
+                    },
+                    body: JSON.stringify({ cart: cart })  // Send cart data correctly as JSON
+                })
+                .then(function(res) {
+                    return res.json();
+                })
+                .then(function(data) {
+                    if (data.error) {
+                        alert('Error creating order: ' + data.error);
+                        throw new Error(data.error);
+                    }
+
+                    if (!data.order_id) {
+                        alert('No order ID returned');
+                        throw new Error('Order ID is undefined');
+                    }
+                    orderData.order_id = data.order_id
+
+                    // 2. Now create a PayPal order using the order_id returned from the backend
+                    return fetch(`http://localhost:8000/api/checkout/create-paypal-order/?order_id=${data.order_id}`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': '{{ csrf_token }}',
+                        }
+                    });
+                })
+                .then(function(res) {
+                    return res.json();
+                })
+                .then(function(data) {
+                    if (data.error) {
+                        alert('Error creating PayPal order: ' + data.error);
+                        throw new Error(data.error);
+                    }
+                    orderData.paypal_order_id = data.paypal_order_id
+                    return data.paypal_order_id;  // Return the PayPal order ID to initiate the payment
+                });
+            },
+
+            onApprove: function(data, actions) {
+                // Capture the PayPal order using the PayPal order ID
+                return fetch('http://localhost:8000/api/checkout/capture-paypal-order/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}',
+                    },
+                    body: JSON.stringify({ orderData: orderData })
+                })
+                .then(function(res) {
+                    return res.json();
+                })
+                .then(function(details) {
+                    if (details.status === "success") {
+                        alert('Transaction completed by ' + details.details.payer.name.given_name);
+                    } else {
+                        alert('Transaction failed: ' + details.message);
+                    }
+                });
+            }
+        }).render('#paypal-button-container');
+    </script>
+</body>
+</html>
