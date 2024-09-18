@@ -42,6 +42,7 @@ const ProductCard = ({ data }) => {
               className='hidden group-hover:block'>
                  Add to Cart'
               </button>
+              
             </div>
                
               
