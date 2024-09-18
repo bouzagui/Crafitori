@@ -38,7 +38,7 @@ const CategorySlide = () => {
 
     useEffect(() => {
         // Fetch categories from the API
-        axiosInstance.get('categories/') // Replace with your actual API endpoint
+        axiosInstance.get('categories/') 
             .then(response => {
                 setCategories(response.data.filter(category => category.parent === null));
             })

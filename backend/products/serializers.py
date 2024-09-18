@@ -29,7 +29,7 @@ class ProductSerializer(serializers.ModelSerializer):
     uploaded_images = serializers.ListField(
         child=serializers.ImageField(max_length=100000, allow_empty_file=False, use_url=False),
         write_only=True,
-        required=True #Disable in Developement
+        required=True #Enable in Prod
     )
 
     class Meta:
@@ -48,7 +48,7 @@ class ProductSerializer(serializers.ModelSerializer):
         category = Category.objects.get(id=category_id)
 
         # Extract the uploaded images from the validated_data
-        uploaded_images = validated_data.pop('uploaded_images')
+        # uploaded_images = validated_data.pop('uploaded_images')
 
         # Create the product instance
         product = Product.objects.create(category=category, **validated_data)
