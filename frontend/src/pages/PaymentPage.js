@@ -1,120 +1,105 @@
-// import React, { useEffect, useState } from 'react';
-// import { useLocation, useNavigate } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import Navbar from '../components/navBar/Navbar';
 
-// const PaymentPage = () => {
-//   const [ycPay, setYcPay] = useState(null);
-//   const [error, setError] = useState(null);
-//   const location = useLocation();
-//   const navigate = useNavigate();
-//   const { totalAmount } = location.state || {};
+const PaymentPage = () => {
+  const location = useLocation();
+  const totalAmount = location.state?.totalAmount || 0;
+  const paypalContainerRef = useRef(null);
+  const [isScriptLoaded, setIsScriptLoaded] = useState(false);
+  const [error, setError] = useState(null);
 
-//   useEffect(() => {
-//     const script = document.createElement('script');
-//     script.src = 'https://youcanpay.com/js/ycpay.js';
-//     script.async = true;
-//     script.onload = initializeYouCanPay;
-//     document.body.appendChild(script);
+  useEffect(() => {
+    const loadPayPalScript = () => {
+      return new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = "https://www.paypal.com/sdk/js?client-id=AartfsAJihC78lPm8_kFqloOD0PwsFiiHQL2YmCYwMOAgaKc268HkeQiX8DyGQOGEalVATpZwBUSLWex";
+        script.async = true;
+        script.onload = () => {
+          setIsScriptLoaded(true);
+          resolve();
+        };
+        script.onerror = () => {
+          setError('Failed to load PayPal SDK');
+          reject();
+        };
+        document.body.appendChild(script);
+      });
+    };
 
-//     return () => {
-//       document.body.removeChild(script);
-//     };
-//   }, []);
+    if (!isScriptLoaded) {
+      loadPayPalScript().catch(console.error);
+    }
 
-//   const initializeYouCanPay = () => {
-//     const ycPayInstance = new window.YCPay('pub_sandbox_0713df81-e7fc-42b4-8087-7c9c4', {
-//       formContainer: '#payment-container',
-//       locale: 'en',
-//       isSandbox: true,  // Set to false for production
-//       errorContainer: '#error-container'
-//     });
-//     setYcPay(ycPayInstance);
-//     ycPayInstance.renderCreditCardForm();
-//   };
+    return () => {
+      if (paypalContainerRef.current) {
+        paypalContainerRef.current.innerHTML = '';
+      }
+    };
+  }, [isScriptLoaded]);
 
-//   const handlePayment = () => {
-//     if (ycPay) {
-//       ycPay.pay({
-//         token: generateToken(),
-//         sandbox: true,  // Set to false for production
-//       })
-//         .then(handlePaymentSuccess)
-//         .catch(handlePaymentError);
-//     }
-//   };
+  useEffect(() => {
+    const renderPayPalButtons = () => {
+      if (window.paypal && paypalContainerRef.current) {
+        window.paypal.Buttons({
+          createOrder: (data, actions) => {
+            return actions.order.create({
+              purchase_units: [{
+                amount: {
+                  value: totalAmount.toFixed(2),
+                },
+              }],
+            });
+          },
+          onApprove: (data, actions) => {
+            return actions.order.capture().then((details) => {
+              console.log('Payment completed successfully', details);
+              window.location.href = '/success';
+            });
+          },
+          onError: (err) => {
+            console.error('PayPal Checkout Error: ', err);
+            setError('Payment failed. Please try again.');
+          }
+        }).render(paypalContainerRef.current)
+          .catch(err => {
+            console.error('Failed to render PayPal buttons', err);
+            setError('Failed to initialize payment system');
+          });
+      }
+    };
 
-//   const generateToken = () => {
-//     // This is a simplified example. In a real application, you'd want to generate this on the server.
-//     return `token_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-//   };
+    if (isScriptLoaded && paypalContainerRef.current) {
+      renderPayPalButtons();
+    }
+  }, [isScriptLoaded, totalAmount]);
 
-//   const handlePaymentSuccess = (response) => {
-//     console.log('Payment successful:', response);
-//     navigate('/payment-success');
-//   };
+  if (error) {
+    return (
+      <div>
+        <Navbar />
+        <div className="max-w-screen-lg mx-auto px-4 text-center">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl my-4 sm:my-6 lg:my-8">Error</h1>
+          <p className="text-lg sm:text-xl text-red-500">{error}</p>
+        </div>
+      </div>
+    );
+  }
 
-//   const handlePaymentError = (error) => {
-//     console.error('Payment failed:', error);
-//     setError('Payment failed. Please try again.');
-//   };
+  return (
+    <div>
+      <Navbar />
+      <div className="max-w-screen-lg mx-auto px-4 flex flex-col items-center justify-center">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl my-4 sm:my-6 lg:my-8 text-center">
+          Complete Your Payment
+        </h1>
+        <p className="text-lg sm:text-xl text-center">
+          Total Amount: ${totalAmount.toFixed(2)}
+        </p>
+        <div id="paypal-button-container" ref={paypalContainerRef} className="w-full mt-4"></div>
+      </div>
+    </div>
+  );
+};
 
-//   if (!totalAmount) {
-//     return <div>No amount specified for payment.</div>;
-//   }
-
-//   return (
-//     <div className="container mx-auto p-4">
-//       <h2 className="text-2xl font-bold mb-4">Payment</h2>
-//       <div id="error-container"></div>
-//       <div id="payment-container" className="mb-4"></div>
-//       {error && <div className="text-red-500 mb-4">{error}</div>}
-//       <button
-//         onClick={handlePayment}
-//         className="bg-blue-500 text-white py-2 px-4 rounded"
-//         disabled={!ycPay}
-//       >
-//         Pay ${totalAmount}
-//       </button>
-//     </div>
-//   );
-// };
-
-// export default PaymentPage;
-
-
-
-
-
-
-// // import React from 'react';
-// // import { useLocation } from 'react-router-dom';
-// // import PaymentForm from '../components/payment/PaymentForm';
-// // import Navbar from '../components/navBar/Navbar';
-
-// // const PaymentPage = () => {
-// //   const location = useLocation();
-// //   const totalAmount = location.state?.totalAmount || 0;  // Retrieve the total amount from the cart
-
-// //   // Handle payment result based on success or failure
-// //   const handlePaymentResult = (status) => {
-// //     if (status === 'success') {
-// //       window.location.href = '/success'; // Redirect to success page
-// //     } else if (status === 'failure') {
-// //       window.location.href = '/failure'; // Redirect to failure/error page
-// //     }
-// //   };
-
-// //   return (
-// //     <div>
-// //         <Navbar />
-// //         <div className="container mx-auto">
-// //           <h1 className="text-4xl text-center my-8">Complete Your Payment</h1>
-// //           <p className="text-xl text-center">Total Amount: ${totalAmount.toFixed(2)}</p>
-          
-// //           {/* Pass handlePaymentResult as a prop to PaymentForm */}
-// //           <PaymentForm totalAmount={totalAmount} onPaymentComplete={handlePaymentResult} />
-// //         </div>
-// //     </div>
-// //   );
-// // };
-
-// // export default PaymentPage;
+export default PaymentPage;

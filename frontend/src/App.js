@@ -13,6 +13,8 @@ import CreateProduct from './components/products/CreateProduct';
 import CartPage from './components/cart/CartPage';
 import { CartProvider } from './context/CartContext';
 import PaymentPage from './pages/PaymentPage';
+import SellerDashboard from './components/dashboard/SellerDashboard';
+import TestCreateProduct from './components/products/CreateProduct';
 
 
 function App() {
@@ -37,6 +39,8 @@ function App() {
           <Route path="/productsPage/:subcategoryId" element={<ProductsPage />} />
           <Route path="/newProduct" element={<CreateProduct />} />
           <Route path="/payment" element={<PaymentPage />} />
+          <Route path="/dashboard" element={<SellerDashboard />} />
+          <Route path="/create-product" element={<TestCreateProduct />} />
         </Routes>
       </Router>
       </CartProvider>
