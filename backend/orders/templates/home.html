@@ -143,7 +143,7 @@
                         alert('No order ID returned');
                         throw new Error('Order ID is undefined');
                     }
-                    orderData.order_id = data.order_id
+                    orderData.order_id = data.order_id 
 
                     // 2. Now create a PayPal order using the order_id returned from the backend
                     return fetch(`http://localhost:8000/api/checkout/create-paypal-order/?order_id=${data.order_id}`, {
