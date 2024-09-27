@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% comment %} <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -96,6 +97,8 @@
 </body>
 </html> {% endcomment %}
 
+=======
+>>>>>>> 37d074c8dd3e05c499535927240d1e9e16302484
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -143,7 +146,11 @@
                         alert('No order ID returned');
                         throw new Error('Order ID is undefined');
                     }
+<<<<<<< HEAD
                     orderData.order_id = data.order_id 
+=======
+                    orderData.order_id = data.order_id
+>>>>>>> 37d074c8dd3e05c499535927240d1e9e16302484
 
                     // 2. Now create a PayPal order using the order_id returned from the backend
                     return fetch(`http://localhost:8000/api/checkout/create-paypal-order/?order_id=${data.order_id}`, {

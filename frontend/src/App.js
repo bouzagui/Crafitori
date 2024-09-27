@@ -13,6 +13,11 @@ import CreateProduct from './components/products/CreateProduct';
 import CartPage from './components/cart/CartPage';
 import { CartProvider } from './context/CartContext';
 import PaymentPage from './pages/PaymentPage';
+<<<<<<< HEAD
+=======
+import SellerDashboard from './components/dashboard/SellerDashboard';
+import TestCreateProduct from './components/products/CreateProduct';
+>>>>>>> 37d074c8dd3e05c499535927240d1e9e16302484
 
 
 function App() {
@@ -37,6 +42,11 @@ function App() {
           <Route path="/productsPage/:subcategoryId" element={<ProductsPage />} />
           <Route path="/newProduct" element={<CreateProduct />} />
           <Route path="/payment" element={<PaymentPage />} />
+<<<<<<< HEAD
+=======
+          <Route path="/dashboard" element={<SellerDashboard />} />
+          <Route path="/create-product" element={<TestCreateProduct />} />
+>>>>>>> 37d074c8dd3e05c499535927240d1e9e16302484
         </Routes>
       </Router>
       </CartProvider>
@@ -45,6 +55,10 @@ function App() {
   );
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 37d074c8dd3e05c499535927240d1e9e16302484
 export default App;
 
 // Epickeen1

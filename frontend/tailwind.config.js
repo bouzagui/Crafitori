@@ -44,7 +44,11 @@ module.exports = {
         sm: '640px',
         md: '768px',
         lg: '1024px',
+<<<<<<< HEAD
         xl: '1440px',
+=======
+        xl: '1280px'
+>>>>>>> 37d074c8dd3e05c499535927240d1e9e16302484
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
