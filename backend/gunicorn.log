@@ -1,0 +1,19 @@
+[2024-09-28 17:07:45 +0000] [7337] [INFO] Starting gunicorn 20.0.4
+[2024-09-28 17:07:45 +0000] [7337] [INFO] Listening at: http://127.0.0.1:8000 (7337)
+[2024-09-28 17:07:45 +0000] [7337] [INFO] Using worker: sync
+[2024-09-28 17:07:45 +0000] [7338] [INFO] Booting worker with pid: 7338
+[2024-09-28 17:08:18 +0000] [7337] [INFO] Handling signal: int
+[2024-09-28 17:08:18 +0000] [7338] [INFO] Worker exiting (pid: 7338)
+[2024-09-28 17:08:18 +0000] [7337] [INFO] Shutting down: Master
+[2024-09-28 17:10:54 +0000] [7346] [INFO] Starting gunicorn 20.0.4
+[2024-09-28 17:10:54 +0000] [7346] [INFO] Listening at: http://127.0.0.1:8000 (7346)
+[2024-09-28 17:10:54 +0000] [7346] [INFO] Using worker: sync
+[2024-09-28 17:10:54 +0000] [7347] [INFO] Booting worker with pid: 7347
+[2024-09-28 17:10:56 +0000] [7346] [INFO] Handling signal: int
+[2024-09-28 17:10:56 +0000] [7346] [INFO] Shutting down: Master
+[2024-09-28 17:11:38 +0000] [7356] [INFO] Starting gunicorn 20.0.4
+[2024-09-28 17:11:38 +0000] [7356] [INFO] Listening at: http://127.0.0.1:8000 (7356)
+[2024-09-28 17:11:38 +0000] [7356] [INFO] Using worker: sync
+[2024-09-28 17:11:38 +0000] [7357] [INFO] Booting worker with pid: 7357
+[2024-09-28 17:13:35 +0000] [7356] [INFO] Handling signal: int
+[2024-09-28 17:13:36 +0000] [7356] [INFO] Shutting down: Master
