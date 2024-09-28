@@ -108,6 +108,15 @@ class capture_paypal_order(APIView):
             "Authorization": f"Bearer {access_token}",
         }
         response = requests.post(capture_url, headers=headers)
+<<<<<<< HEAD
+        print(f"PayPal response status: {response.status_code}")
+        print(f"PayPal response content: {response.text}")
+        try:
+            response_data = response.json()
+        except ValueError:  # This will catch the JSONDecodeError
+            response_data = response.text
+=======
+>>>>>>> 37d074c8dd3e05c499535927240d1e9e16302484
 
         # Check if the capture was successful
         if response.status_code in (200, 201):
@@ -123,7 +132,11 @@ class capture_paypal_order(APIView):
             else:
                 return JsonResponse({"status": "error", "message": "Payment not completed", "details": data})
         else:
+<<<<<<< HEAD
+            return JsonResponse({"status": "error", "message": "Failed to capture payment", "response": response_data})
+=======
             return JsonResponse({"status": "error", "message": "Failed to capture payment", "response": response.json()})
+>>>>>>> 37d074c8dd3e05c499535927240d1e9e16302484
 
 
 class CheckoutView(APIView):
