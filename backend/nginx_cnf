@@ -1,0 +1,30 @@
+server {
+    listen 80;
+    server_name crafitori.com www.crafitori.com web01.crafitori.com;
+
+    root /home/ubuntu/crafitori_static/build;  # This is for your React static files
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ /index.html;  # Serve index.html for all requests not matched by a file
+    }
+
+    location /media/ {
+        alias /home/ubuntu/crafitori/backend/media/;  # Correct path to your MEDIA_ROOT
+        autoindex on;  # Optional: enables directory listing for debugging
+        expires 30d;  # Cache media files for 30 days
+    }
+
+    location /api/ {
+        proxy_pass http://127.0.0.1:8000;  # Forward requests to the Django app
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    # location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg)$ {
+    #    expires 1y;  # Cache static files for 1 year
+    #    add_header Cache-Control "public";
+    # }
+}

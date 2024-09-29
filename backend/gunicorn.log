@@ -24,3 +24,13 @@
 [2024-09-28 22:46:47 +0000] [8393] [INFO] Handling signal: hup
 [2024-09-28 22:46:47 +0000] [8393] [INFO] Hang up: Master
 [2024-09-28 22:46:47 +0000] [8773] [INFO] Booting worker with pid: 8773
+[2024-09-29 23:06:53 +0000] [8393] [INFO] Handling signal: term
+[2024-09-29 23:06:53 +0000] [8773] [INFO] Worker exiting (pid: 8773)
+[2024-09-29 23:06:53 +0000] [8393] [INFO] Shutting down: Master
+[2024-09-29 23:07:11 +0000] [11611] [INFO] Starting gunicorn 20.0.4
+[2024-09-29 23:07:11 +0000] [11611] [INFO] Listening at: http://127.0.0.1:8000 (11611)
+[2024-09-29 23:07:11 +0000] [11611] [INFO] Using worker: sync
+[2024-09-29 23:07:11 +0000] [11612] [INFO] Booting worker with pid: 11612
+[2024-09-29 23:07:16 +0000] [11611] [INFO] Handling signal: int
+[2024-09-29 23:07:17 +0000] [11612] [INFO] Worker exiting (pid: 11612)
+[2024-09-29 23:07:17 +0000] [11611] [INFO] Shutting down: Master

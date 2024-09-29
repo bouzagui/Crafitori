@@ -1,2 +1,2 @@
 #!/bin/bash
-gunicorn --bind 127.0.0.1:8000 backend.wsgi:application --log-file gunicorn.log
+gunicorn --bind 127.0.0.1:8000 backend.wsgi:application
