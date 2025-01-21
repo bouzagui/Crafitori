@@ -128,5 +128,4 @@ Crafitori is licensed under the MIT License. See the [LICENSE](LICENSE) file for
 Feel free to connect with our team for any queries, suggestions, or feedback:
 
 - **Abdeljalil Ouafi:** - [abdeljalilouafi55@gmail.com](mailto:abdeljalilouafi55@gmail.com)
-- **Soukaina Megdani:** - [megdani20soukaina@gmail.com](mailto:megdani20soukaina@gmail.com)
-
+- **Abdelhakim Joulal:** - [joulal1994@gmail.com](mailto:joulal1994@gmail.com)
