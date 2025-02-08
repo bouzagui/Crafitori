@@ -9,4 +9,7 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = ['id', 'name', 'parent', 'subcategories', 'image']
 
     def get_subcategories(self, obj):
-        return CategorySerializer(obj.subcategories.all(), many=True).data
+        # Check if the object has subcategories
+        if obj.subcategories.exists():
+            return CategorySerializer(obj.subcategories.all(), many=True).data
+        return []  # Return an empty list if no subcategories

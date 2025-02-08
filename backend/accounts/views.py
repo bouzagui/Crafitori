@@ -113,7 +113,6 @@ class LogoutApiView(GenericAPIView):
 class PrivateProfileView(generics.RetrieveUpdateAPIView):
     serializer_class = ProfilePrivateSerializer
     permission_classes = [IsAuthenticated]
-    parser_classes = (MultiPartParser, FormParser)
 
     def get_object(self):
         return self.request.user.profile

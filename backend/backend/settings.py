@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-ey_6)@(x=mz6t!en(y1ors=r)gy+q(aet%%475i%0tc9mf+1r^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["www.crafitori.com", "127.0.0.1"]
+ALLOWED_HOSTS = ["www.crafitori.com", "127.0.0.1", "localhost"]
 
 
 # Application definition
@@ -175,3 +175,5 @@ CORS_ALLOWED_ORIGINS = [
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+PAYPAL_MODE = 'live'

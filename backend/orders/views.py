@@ -7,13 +7,15 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework import status
 import requests
-import os
+from decouple import config
 from decimal import Decimal
+from django.conf import settings
 
 
-PAYPAL_CLIENT_ID = os.getenv('PAYPAL_CLIENT_ID')
-PAYPAL_SECRET = os.getenv('PAYPAL_SECRET')
-PAYPAL_API_BASE_URL = 'https://api-m.sandbox.paypal.com'
+PAYPAL_MODE = getattr(settings, 'PAYPAL_MODE', 'sandbox')
+PAYPAL_CLIENT_ID = config('PAYPAL_CLIENT_ID')
+PAYPAL_SECRET = config('PAYPAL_SECRET')
+PAYPAL_API_BASE_URL = 'https://api-m.paypal.com' if PAYPAL_MODE == 'live' else 'https://api-m.sandbox.paypal.com'
 MAD_TO_USD_EXCHANGE_RATE = Decimal('0.10')
 
 

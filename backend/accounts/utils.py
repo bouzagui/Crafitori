@@ -2,7 +2,7 @@ import random
 from django.core.mail import EmailMessage, get_connection
 from .models import User, OnetimePassword
 from django.conf import settings
-from os import getenv
+from decouple import config
 
 def generateOtp():
     otp=""
@@ -91,7 +91,7 @@ def resend_email(email):
         host=settings.RESEND_SMTP_HOST,
         port=settings.RESEND_SMTP_PORT,
         username=settings.RESEND_SMTP_USERNAME,
-        password=getenv("RESEND_API_KEY"),
+        password=config("RESEND_API_KEY"),
         use_tls=True,
     ) as connection:
         email_message = EmailMessage(
