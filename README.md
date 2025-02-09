@@ -29,9 +29,8 @@ Crafitori is an online marketplace designed for buying and selling handmade, hig
 ## Tech Stack
 
 ### Backend
-- **Framework**: Django (with Django REST Framework for API endpoints).
-- **Database**: PostgreSQL for secure and scalable data storage.
-- **Caching**: Redis for performance optimization, including autocomplete and popular items.
+- **Framework**: Django REST Framework
+- **Database**: PostgreSQL for secure and scalable data storage. Sqlite for Developement
 
 ### Frontend
 - **Framework**: React for a responsive and dynamic user experience.
@@ -49,33 +48,33 @@ Crafitori is an online marketplace designed for buying and selling handmade, hig
 - Python 3.10+
 - Node.js and npm
 - PostgreSQL
-- Redis
 
 ### Backend Setup
 1. Clone the repository:
    ```bash
-   git clone https://github.com/hakimsmox/crafitori.git
-   cd crafitori/backend
+   git clone https://github.com/AbdeljalilOuafi/Crafitori.git
+   cd Crafitori/backend
    ```
 2. Install dependencies:
    ```bash
+   python3 -m venv myenv
+   source myenv/bin/activate
    pip install -r requirements.txt
    ```
 3. Set up environment variables:
-   - Create a `.env` file with:
+   - Create a `.env` file in the root of the project with:
      ```env
-     SECRET_KEY=your_secret_key
-     DEBUG=True
-     DATABASE_URL=your_database_url
-     REDIS_URL=your_redis_url
+     RESEND_API_KEY=resend-api-key
+     PAYPAL_CLIENT_ID=your-paypal-client-id
+     PAYPAL_SECRET=your-paypal-secret
      ```
 4. Run database migrations:
    ```bash
-   python manage.py migrate
+   python3 manage.py migrate
    ```
 5. Start the development server:
    ```bash
-   python manage.py runserver
+   python3 manage.py runserver
    ```
 
 ### Frontend Setup
