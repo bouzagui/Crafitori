@@ -1,0 +1,411 @@
+-- Logs begin at Fri 2025-02-07 21:54:39 UTC, end at Sat 2025-02-08 22:48:13 UTC. --
+Feb 08 21:44:39 instance-20250207-215308 systemd[1]: Started Crafitori Django App.
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266308]: [2025-02-08 21:44:40 +0000] [266308] [INFO] Starting gunicorn 20.0.4
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266308]: [2025-02-08 21:44:40 +0000] [266308] [INFO] Listening at: http://127.0.0.1:8000 (266308)
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266308]: [2025-02-08 21:44:40 +0000] [266308] [INFO] Using worker: sync
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266310]: [2025-02-08 21:44:40 +0000] [266310] [INFO] Booting worker with pid: 266310
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266310]: [2025-02-08 21:44:40 +0000] [266310] [ERROR] Exception in worker process
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266310]: Traceback (most recent call last):
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266310]:   File "/usr/lib/python3/dist-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266310]:     worker.init_process()
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266310]:   File "/usr/lib/python3/dist-packages/gunicorn/workers/base.py", line 119, in init_process
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266310]:     self.load_wsgi()
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266310]:   File "/usr/lib/python3/dist-packages/gunicorn/workers/base.py", line 144, in load_wsgi
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266310]:     self.wsgi = self.app.wsgi()
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266310]:   File "/usr/lib/python3/dist-packages/gunicorn/app/base.py", line 67, in wsgi
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266310]:     self.callable = self.load()
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266310]:   File "/usr/lib/python3/dist-packages/gunicorn/app/wsgiapp.py", line 49, in load
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266310]:     return self.load_wsgiapp()
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266310]:   File "/usr/lib/python3/dist-packages/gunicorn/app/wsgiapp.py", line 39, in load_wsgiapp
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266310]:     return util.import_app(self.app_uri)
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266310]:   File "/usr/lib/python3/dist-packages/gunicorn/util.py", line 383, in import_app
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266310]:     mod = importlib.import_module(module)
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266310]:   File "/usr/lib/python3.10/importlib/__init__.py", line 126, in import_module
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266310]:     return _bootstrap._gcd_import(name[level:], package, level)
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266310]:   File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266310]:   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266310]:   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266310]:   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266310]:   File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266310]:   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266310]:   File "/home/ouafi/Crafitori/backend/backend/wsgi.py", line 12, in <module>
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266310]:     from django.core.wsgi import get_wsgi_application
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266310]: ModuleNotFoundError: No module named 'django'
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266310]: [2025-02-08 21:44:40 +0000] [266310] [INFO] Worker exiting (pid: 266310)
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266311]: [2025-02-08 21:44:40 +0000] [266311] [INFO] Booting worker with pid: 266311
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266311]: [2025-02-08 21:44:40 +0000] [266311] [ERROR] Exception in worker process
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266311]: Traceback (most recent call last):
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266311]:   File "/usr/lib/python3/dist-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266311]:     worker.init_process()
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266311]:   File "/usr/lib/python3/dist-packages/gunicorn/workers/base.py", line 119, in init_process
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266311]:     self.load_wsgi()
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266311]:   File "/usr/lib/python3/dist-packages/gunicorn/workers/base.py", line 144, in load_wsgi
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266311]:     self.wsgi = self.app.wsgi()
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266311]:   File "/usr/lib/python3/dist-packages/gunicorn/app/base.py", line 67, in wsgi
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266311]:     self.callable = self.load()
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266311]:   File "/usr/lib/python3/dist-packages/gunicorn/app/wsgiapp.py", line 49, in load
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266311]:     return self.load_wsgiapp()
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266311]:   File "/usr/lib/python3/dist-packages/gunicorn/app/wsgiapp.py", line 39, in load_wsgiapp
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266311]:     return util.import_app(self.app_uri)
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266311]:   File "/usr/lib/python3/dist-packages/gunicorn/util.py", line 383, in import_app
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266311]:     mod = importlib.import_module(module)
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266311]:   File "/usr/lib/python3.10/importlib/__init__.py", line 126, in import_module
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266311]:     return _bootstrap._gcd_import(name[level:], package, level)
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266311]:   File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266311]:   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266311]:   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266311]:   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266311]:   File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266311]:   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266311]:   File "/home/ouafi/Crafitori/backend/backend/wsgi.py", line 12, in <module>
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266311]:     from django.core.wsgi import get_wsgi_application
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266311]: ModuleNotFoundError: No module named 'django'
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266311]: [2025-02-08 21:44:40 +0000] [266311] [INFO] Worker exiting (pid: 266311)
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266308]: [2025-02-08 21:44:40 +0000] [266308] [INFO] Shutting down: Master
+Feb 08 21:44:40 instance-20250207-215308 gunicorn[266308]: [2025-02-08 21:44:40 +0000] [266308] [INFO] Reason: Worker failed to boot.
+Feb 08 21:44:40 instance-20250207-215308 systemd[1]: [0;1;39m[0;1;31m[0;1;39mcrafitori.service: Main process exited, code=exited, status=3/NOTIMPLEMENTED[0m
+Feb 08 21:44:40 instance-20250207-215308 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185mcrafitori.service: Failed with result 'exit-code'.[0m
+Feb 08 21:44:40 instance-20250207-215308 systemd[1]: crafitori.service: Scheduled restart job, restart counter is at 1.
+Feb 08 21:44:40 instance-20250207-215308 systemd[1]: Stopped Crafitori Django App.
+Feb 08 21:44:40 instance-20250207-215308 systemd[1]: Started Crafitori Django App.
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266313]: [2025-02-08 21:44:41 +0000] [266313] [INFO] Starting gunicorn 20.0.4
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266313]: [2025-02-08 21:44:41 +0000] [266313] [INFO] Listening at: http://127.0.0.1:8000 (266313)
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266313]: [2025-02-08 21:44:41 +0000] [266313] [INFO] Using worker: sync
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266329]: [2025-02-08 21:44:41 +0000] [266329] [INFO] Booting worker with pid: 266329
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266329]: [2025-02-08 21:44:41 +0000] [266329] [ERROR] Exception in worker process
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266329]: Traceback (most recent call last):
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266329]:   File "/usr/lib/python3/dist-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266329]:     worker.init_process()
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266329]:   File "/usr/lib/python3/dist-packages/gunicorn/workers/base.py", line 119, in init_process
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266329]:     self.load_wsgi()
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266329]:   File "/usr/lib/python3/dist-packages/gunicorn/workers/base.py", line 144, in load_wsgi
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266329]:     self.wsgi = self.app.wsgi()
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266329]:   File "/usr/lib/python3/dist-packages/gunicorn/app/base.py", line 67, in wsgi
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266329]:     self.callable = self.load()
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266329]:   File "/usr/lib/python3/dist-packages/gunicorn/app/wsgiapp.py", line 49, in load
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266329]:     return self.load_wsgiapp()
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266329]:   File "/usr/lib/python3/dist-packages/gunicorn/app/wsgiapp.py", line 39, in load_wsgiapp
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266329]:     return util.import_app(self.app_uri)
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266329]:   File "/usr/lib/python3/dist-packages/gunicorn/util.py", line 383, in import_app
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266329]:     mod = importlib.import_module(module)
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266329]:   File "/usr/lib/python3.10/importlib/__init__.py", line 126, in import_module
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266329]:     return _bootstrap._gcd_import(name[level:], package, level)
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266329]:   File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266329]:   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266329]:   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266329]:   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266329]:   File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266329]:   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266329]:   File "/home/ouafi/Crafitori/backend/backend/wsgi.py", line 12, in <module>
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266329]:     from django.core.wsgi import get_wsgi_application
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266329]: ModuleNotFoundError: No module named 'django'
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266329]: [2025-02-08 21:44:41 +0000] [266329] [INFO] Worker exiting (pid: 266329)
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266330]: [2025-02-08 21:44:41 +0000] [266330] [INFO] Booting worker with pid: 266330
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266330]: [2025-02-08 21:44:41 +0000] [266330] [ERROR] Exception in worker process
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266330]: Traceback (most recent call last):
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266330]:   File "/usr/lib/python3/dist-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266330]:     worker.init_process()
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266330]:   File "/usr/lib/python3/dist-packages/gunicorn/workers/base.py", line 119, in init_process
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266330]:     self.load_wsgi()
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266330]:   File "/usr/lib/python3/dist-packages/gunicorn/workers/base.py", line 144, in load_wsgi
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266330]:     self.wsgi = self.app.wsgi()
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266330]:   File "/usr/lib/python3/dist-packages/gunicorn/app/base.py", line 67, in wsgi
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266330]:     self.callable = self.load()
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266330]:   File "/usr/lib/python3/dist-packages/gunicorn/app/wsgiapp.py", line 49, in load
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266330]:     return self.load_wsgiapp()
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266330]:   File "/usr/lib/python3/dist-packages/gunicorn/app/wsgiapp.py", line 39, in load_wsgiapp
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266330]:     return util.import_app(self.app_uri)
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266330]:   File "/usr/lib/python3/dist-packages/gunicorn/util.py", line 383, in import_app
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266330]:     mod = importlib.import_module(module)
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266330]:   File "/usr/lib/python3.10/importlib/__init__.py", line 126, in import_module
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266330]:     return _bootstrap._gcd_import(name[level:], package, level)
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266330]:   File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266330]:   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266330]:   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266330]:   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266330]:   File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266330]:   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266330]:   File "/home/ouafi/Crafitori/backend/backend/wsgi.py", line 12, in <module>
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266330]:     from django.core.wsgi import get_wsgi_application
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266330]: ModuleNotFoundError: No module named 'django'
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266330]: [2025-02-08 21:44:41 +0000] [266330] [INFO] Worker exiting (pid: 266330)
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266313]: [2025-02-08 21:44:41 +0000] [266313] [INFO] Shutting down: Master
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266313]: [2025-02-08 21:44:41 +0000] [266313] [INFO] Reason: Worker failed to boot.
+Feb 08 21:44:41 instance-20250207-215308 systemd[1]: [0;1;39m[0;1;31m[0;1;39mcrafitori.service: Main process exited, code=exited, status=3/NOTIMPLEMENTED[0m
+Feb 08 21:44:41 instance-20250207-215308 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185mcrafitori.service: Failed with result 'exit-code'.[0m
+Feb 08 21:44:41 instance-20250207-215308 systemd[1]: crafitori.service: Scheduled restart job, restart counter is at 2.
+Feb 08 21:44:41 instance-20250207-215308 systemd[1]: Stopped Crafitori Django App.
+Feb 08 21:44:41 instance-20250207-215308 systemd[1]: Started Crafitori Django App.
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266331]: [2025-02-08 21:44:41 +0000] [266331] [INFO] Starting gunicorn 20.0.4
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266331]: [2025-02-08 21:44:41 +0000] [266331] [INFO] Listening at: http://127.0.0.1:8000 (266331)
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266331]: [2025-02-08 21:44:41 +0000] [266331] [INFO] Using worker: sync
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266332]: [2025-02-08 21:44:41 +0000] [266332] [INFO] Booting worker with pid: 266332
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266332]: [2025-02-08 21:44:41 +0000] [266332] [ERROR] Exception in worker process
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266332]: Traceback (most recent call last):
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266332]:   File "/usr/lib/python3/dist-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266332]:     worker.init_process()
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266332]:   File "/usr/lib/python3/dist-packages/gunicorn/workers/base.py", line 119, in init_process
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266332]:     self.load_wsgi()
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266332]:   File "/usr/lib/python3/dist-packages/gunicorn/workers/base.py", line 144, in load_wsgi
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266332]:     self.wsgi = self.app.wsgi()
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266332]:   File "/usr/lib/python3/dist-packages/gunicorn/app/base.py", line 67, in wsgi
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266332]:     self.callable = self.load()
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266332]:   File "/usr/lib/python3/dist-packages/gunicorn/app/wsgiapp.py", line 49, in load
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266332]:     return self.load_wsgiapp()
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266332]:   File "/usr/lib/python3/dist-packages/gunicorn/app/wsgiapp.py", line 39, in load_wsgiapp
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266332]:     return util.import_app(self.app_uri)
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266332]:   File "/usr/lib/python3/dist-packages/gunicorn/util.py", line 383, in import_app
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266332]:     mod = importlib.import_module(module)
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266332]:   File "/usr/lib/python3.10/importlib/__init__.py", line 126, in import_module
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266332]:     return _bootstrap._gcd_import(name[level:], package, level)
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266332]:   File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266332]:   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266332]:   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266332]:   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266332]:   File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266332]:   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266332]:   File "/home/ouafi/Crafitori/backend/backend/wsgi.py", line 12, in <module>
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266332]:     from django.core.wsgi import get_wsgi_application
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266332]: ModuleNotFoundError: No module named 'django'
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266332]: [2025-02-08 21:44:41 +0000] [266332] [INFO] Worker exiting (pid: 266332)
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266331]: [2025-02-08 21:44:41 +0000] [266331] [INFO] Shutting down: Master
+Feb 08 21:44:41 instance-20250207-215308 gunicorn[266331]: [2025-02-08 21:44:41 +0000] [266331] [INFO] Reason: Worker failed to boot.
+Feb 08 21:44:41 instance-20250207-215308 systemd[1]: [0;1;39m[0;1;31m[0;1;39mcrafitori.service: Main process exited, code=exited, status=3/NOTIMPLEMENTED[0m
+Feb 08 21:44:41 instance-20250207-215308 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185mcrafitori.service: Failed with result 'exit-code'.[0m
+Feb 08 21:44:42 instance-20250207-215308 systemd[1]: crafitori.service: Scheduled restart job, restart counter is at 3.
+Feb 08 21:44:42 instance-20250207-215308 systemd[1]: Stopped Crafitori Django App.
+Feb 08 21:44:42 instance-20250207-215308 systemd[1]: Started Crafitori Django App.
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266336]: [2025-02-08 21:44:42 +0000] [266336] [INFO] Starting gunicorn 20.0.4
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266336]: [2025-02-08 21:44:42 +0000] [266336] [INFO] Listening at: http://127.0.0.1:8000 (266336)
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266336]: [2025-02-08 21:44:42 +0000] [266336] [INFO] Using worker: sync
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266337]: [2025-02-08 21:44:42 +0000] [266337] [INFO] Booting worker with pid: 266337
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266338]: [2025-02-08 21:44:42 +0000] [266338] [INFO] Booting worker with pid: 266338
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266337]: [2025-02-08 21:44:42 +0000] [266337] [ERROR] Exception in worker process
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266337]: Traceback (most recent call last):
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266337]:   File "/usr/lib/python3/dist-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266337]:     worker.init_process()
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266337]:   File "/usr/lib/python3/dist-packages/gunicorn/workers/base.py", line 119, in init_process
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266337]:     self.load_wsgi()
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266337]:   File "/usr/lib/python3/dist-packages/gunicorn/workers/base.py", line 144, in load_wsgi
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266337]:     self.wsgi = self.app.wsgi()
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266337]:   File "/usr/lib/python3/dist-packages/gunicorn/app/base.py", line 67, in wsgi
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266337]:     self.callable = self.load()
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266337]:   File "/usr/lib/python3/dist-packages/gunicorn/app/wsgiapp.py", line 49, in load
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266337]:     return self.load_wsgiapp()
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266337]:   File "/usr/lib/python3/dist-packages/gunicorn/app/wsgiapp.py", line 39, in load_wsgiapp
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266337]:     return util.import_app(self.app_uri)
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266337]:   File "/usr/lib/python3/dist-packages/gunicorn/util.py", line 383, in import_app
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266337]:     mod = importlib.import_module(module)
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266337]:   File "/usr/lib/python3.10/importlib/__init__.py", line 126, in import_module
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266337]:     return _bootstrap._gcd_import(name[level:], package, level)
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266337]:   File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266337]:   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266337]:   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266337]:   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266337]:   File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266337]:   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266337]:   File "/home/ouafi/Crafitori/backend/backend/wsgi.py", line 12, in <module>
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266337]:     from django.core.wsgi import get_wsgi_application
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266337]: ModuleNotFoundError: No module named 'django'
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266337]: [2025-02-08 21:44:42 +0000] [266337] [INFO] Worker exiting (pid: 266337)
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266338]: [2025-02-08 21:44:42 +0000] [266338] [ERROR] Exception in worker process
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266338]: Traceback (most recent call last):
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266338]:   File "/usr/lib/python3/dist-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266338]:     worker.init_process()
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266338]:   File "/usr/lib/python3/dist-packages/gunicorn/workers/base.py", line 119, in init_process
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266338]:     self.load_wsgi()
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266338]:   File "/usr/lib/python3/dist-packages/gunicorn/workers/base.py", line 144, in load_wsgi
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266338]:     self.wsgi = self.app.wsgi()
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266338]:   File "/usr/lib/python3/dist-packages/gunicorn/app/base.py", line 67, in wsgi
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266338]:     self.callable = self.load()
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266338]:   File "/usr/lib/python3/dist-packages/gunicorn/app/wsgiapp.py", line 49, in load
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266338]:     return self.load_wsgiapp()
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266338]:   File "/usr/lib/python3/dist-packages/gunicorn/app/wsgiapp.py", line 39, in load_wsgiapp
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266338]:     return util.import_app(self.app_uri)
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266338]:   File "/usr/lib/python3/dist-packages/gunicorn/util.py", line 383, in import_app
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266338]:     mod = importlib.import_module(module)
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266338]:   File "/usr/lib/python3.10/importlib/__init__.py", line 126, in import_module
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266338]:     return _bootstrap._gcd_import(name[level:], package, level)
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266338]:   File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266338]:   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266338]:   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266338]:   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266338]:   File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266338]:   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266338]:   File "/home/ouafi/Crafitori/backend/backend/wsgi.py", line 12, in <module>
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266338]:     from django.core.wsgi import get_wsgi_application
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266338]: ModuleNotFoundError: No module named 'django'
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266338]: [2025-02-08 21:44:42 +0000] [266338] [INFO] Worker exiting (pid: 266338)
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266339]: [2025-02-08 21:44:42 +0000] [266339] [INFO] Booting worker with pid: 266339
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266339]: [2025-02-08 21:44:42 +0000] [266339] [ERROR] Exception in worker process
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266339]: Traceback (most recent call last):
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266339]:   File "/usr/lib/python3/dist-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266339]:     worker.init_process()
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266339]:   File "/usr/lib/python3/dist-packages/gunicorn/workers/base.py", line 119, in init_process
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266339]:     self.load_wsgi()
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266339]:   File "/usr/lib/python3/dist-packages/gunicorn/workers/base.py", line 144, in load_wsgi
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266339]:     self.wsgi = self.app.wsgi()
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266339]:   File "/usr/lib/python3/dist-packages/gunicorn/app/base.py", line 67, in wsgi
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266339]:     self.callable = self.load()
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266339]:   File "/usr/lib/python3/dist-packages/gunicorn/app/wsgiapp.py", line 49, in load
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266339]:     return self.load_wsgiapp()
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266339]:   File "/usr/lib/python3/dist-packages/gunicorn/app/wsgiapp.py", line 39, in load_wsgiapp
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266339]:     return util.import_app(self.app_uri)
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266339]:   File "/usr/lib/python3/dist-packages/gunicorn/util.py", line 383, in import_app
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266339]:     mod = importlib.import_module(module)
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266339]:   File "/usr/lib/python3.10/importlib/__init__.py", line 126, in import_module
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266339]:     return _bootstrap._gcd_import(name[level:], package, level)
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266339]:   File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266339]:   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266339]:   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266339]:   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266339]:   File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266339]:   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266339]:   File "/home/ouafi/Crafitori/backend/backend/wsgi.py", line 12, in <module>
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266339]:     from django.core.wsgi import get_wsgi_application
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266339]: ModuleNotFoundError: No module named 'django'
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266339]: [2025-02-08 21:44:42 +0000] [266339] [INFO] Worker exiting (pid: 266339)
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266336]: Traceback (most recent call last):
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266336]:   File "/usr/lib/python3/dist-packages/gunicorn/arbiter.py", line 202, in run
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266336]:     self.manage_workers()
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266336]:   File "/usr/lib/python3/dist-packages/gunicorn/arbiter.py", line 545, in manage_workers
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266336]:     self.spawn_workers()
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266336]:   File "/usr/lib/python3/dist-packages/gunicorn/arbiter.py", line 617, in spawn_workers
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266336]:     time.sleep(0.1 * random.random())
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266336]:   File "/usr/lib/python3/dist-packages/gunicorn/arbiter.py", line 242, in handle_chld
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266336]:     self.reap_workers()
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266336]:   File "/usr/lib/python3/dist-packages/gunicorn/arbiter.py", line 525, in reap_workers
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266336]:     raise HaltServer(reason, self.WORKER_BOOT_ERROR)
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266336]: gunicorn.errors.HaltServer: <HaltServer 'Worker failed to boot.' 3>
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266336]: During handling of the above exception, another exception occurred:
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266336]: Traceback (most recent call last):
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266336]:   File "/usr/bin/gunicorn", line 11, in <module>
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266336]:     load_entry_point('gunicorn==20.0.4', 'console_scripts', 'gunicorn')()
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266336]:   File "/usr/lib/python3/dist-packages/gunicorn/app/wsgiapp.py", line 58, in run
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266336]:     WSGIApplication("%(prog)s [OPTIONS] [APP_MODULE]").run()
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266336]:   File "/usr/lib/python3/dist-packages/gunicorn/app/base.py", line 228, in run
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266336]:     super().run()
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266336]:   File "/usr/lib/python3/dist-packages/gunicorn/app/base.py", line 72, in run
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266336]:     Arbiter(self).run()
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266336]:   File "/usr/lib/python3/dist-packages/gunicorn/arbiter.py", line 229, in run
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266336]:     self.halt(reason=inst.reason, exit_status=inst.exit_status)
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266336]:   File "/usr/lib/python3/dist-packages/gunicorn/arbiter.py", line 342, in halt
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266336]:     self.stop()
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266336]:   File "/usr/lib/python3/dist-packages/gunicorn/arbiter.py", line 393, in stop
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266336]:     time.sleep(0.1)
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266336]:   File "/usr/lib/python3/dist-packages/gunicorn/arbiter.py", line 242, in handle_chld
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266336]:     self.reap_workers()
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266336]:   File "/usr/lib/python3/dist-packages/gunicorn/arbiter.py", line 525, in reap_workers
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266336]:     raise HaltServer(reason, self.WORKER_BOOT_ERROR)
+Feb 08 21:44:42 instance-20250207-215308 gunicorn[266336]: gunicorn.errors.HaltServer: <HaltServer 'Worker failed to boot.' 3>
+Feb 08 21:44:42 instance-20250207-215308 systemd[1]: [0;1;39m[0;1;31m[0;1;39mcrafitori.service: Main process exited, code=exited, status=1/FAILURE[0m
+Feb 08 21:44:42 instance-20250207-215308 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185mcrafitori.service: Failed with result 'exit-code'.[0m
+Feb 08 21:44:42 instance-20250207-215308 systemd[1]: crafitori.service: Scheduled restart job, restart counter is at 4.
+Feb 08 21:44:42 instance-20250207-215308 systemd[1]: Stopped Crafitori Django App.
+Feb 08 21:44:42 instance-20250207-215308 systemd[1]: Started Crafitori Django App.
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266340]: [2025-02-08 21:44:43 +0000] [266340] [INFO] Starting gunicorn 20.0.4
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266340]: [2025-02-08 21:44:43 +0000] [266340] [INFO] Listening at: http://127.0.0.1:8000 (266340)
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266340]: [2025-02-08 21:44:43 +0000] [266340] [INFO] Using worker: sync
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266344]: [2025-02-08 21:44:43 +0000] [266344] [INFO] Booting worker with pid: 266344
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266344]: [2025-02-08 21:44:43 +0000] [266344] [ERROR] Exception in worker process
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266344]: Traceback (most recent call last):
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266344]:   File "/usr/lib/python3/dist-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266344]:     worker.init_process()
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266344]:   File "/usr/lib/python3/dist-packages/gunicorn/workers/base.py", line 119, in init_process
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266344]:     self.load_wsgi()
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266344]:   File "/usr/lib/python3/dist-packages/gunicorn/workers/base.py", line 144, in load_wsgi
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266344]:     self.wsgi = self.app.wsgi()
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266344]:   File "/usr/lib/python3/dist-packages/gunicorn/app/base.py", line 67, in wsgi
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266344]:     self.callable = self.load()
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266344]:   File "/usr/lib/python3/dist-packages/gunicorn/app/wsgiapp.py", line 49, in load
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266344]:     return self.load_wsgiapp()
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266344]:   File "/usr/lib/python3/dist-packages/gunicorn/app/wsgiapp.py", line 39, in load_wsgiapp
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266344]:     return util.import_app(self.app_uri)
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266344]:   File "/usr/lib/python3/dist-packages/gunicorn/util.py", line 383, in import_app
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266344]:     mod = importlib.import_module(module)
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266344]:   File "/usr/lib/python3.10/importlib/__init__.py", line 126, in import_module
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266344]:     return _bootstrap._gcd_import(name[level:], package, level)
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266344]:   File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266344]:   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266344]:   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266344]:   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266344]:   File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266344]:   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266344]:   File "/home/ouafi/Crafitori/backend/backend/wsgi.py", line 12, in <module>
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266344]:     from django.core.wsgi import get_wsgi_application
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266344]: ModuleNotFoundError: No module named 'django'
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266344]: [2025-02-08 21:44:43 +0000] [266344] [INFO] Worker exiting (pid: 266344)
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266348]: [2025-02-08 21:44:43 +0000] [266348] [INFO] Booting worker with pid: 266348
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266348]: [2025-02-08 21:44:43 +0000] [266348] [ERROR] Exception in worker process
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266348]: Traceback (most recent call last):
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266348]:   File "/usr/lib/python3/dist-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266348]:     worker.init_process()
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266348]:   File "/usr/lib/python3/dist-packages/gunicorn/workers/base.py", line 119, in init_process
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266348]:     self.load_wsgi()
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266348]:   File "/usr/lib/python3/dist-packages/gunicorn/workers/base.py", line 144, in load_wsgi
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266348]:     self.wsgi = self.app.wsgi()
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266348]:   File "/usr/lib/python3/dist-packages/gunicorn/app/base.py", line 67, in wsgi
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266348]:     self.callable = self.load()
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266348]:   File "/usr/lib/python3/dist-packages/gunicorn/app/wsgiapp.py", line 49, in load
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266348]:     return self.load_wsgiapp()
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266348]:   File "/usr/lib/python3/dist-packages/gunicorn/app/wsgiapp.py", line 39, in load_wsgiapp
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266348]:     return util.import_app(self.app_uri)
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266348]:   File "/usr/lib/python3/dist-packages/gunicorn/util.py", line 383, in import_app
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266348]:     mod = importlib.import_module(module)
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266348]:   File "/usr/lib/python3.10/importlib/__init__.py", line 126, in import_module
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266348]:     return _bootstrap._gcd_import(name[level:], package, level)
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266348]:   File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266348]:   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266348]:   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266348]:   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266348]:   File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266348]:   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266348]:   File "/home/ouafi/Crafitori/backend/backend/wsgi.py", line 12, in <module>
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266348]:     from django.core.wsgi import get_wsgi_application
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266348]: ModuleNotFoundError: No module named 'django'
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266348]: [2025-02-08 21:44:43 +0000] [266348] [INFO] Worker exiting (pid: 266348)
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266349]: [2025-02-08 21:44:43 +0000] [266349] [INFO] Booting worker with pid: 266349
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266349]: [2025-02-08 21:44:43 +0000] [266349] [ERROR] Exception in worker process
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266349]: Traceback (most recent call last):
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266349]:   File "/usr/lib/python3/dist-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266349]:     worker.init_process()
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266349]:   File "/usr/lib/python3/dist-packages/gunicorn/workers/base.py", line 119, in init_process
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266349]:     self.load_wsgi()
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266349]:   File "/usr/lib/python3/dist-packages/gunicorn/workers/base.py", line 144, in load_wsgi
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266349]:     self.wsgi = self.app.wsgi()
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266349]:   File "/usr/lib/python3/dist-packages/gunicorn/app/base.py", line 67, in wsgi
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266349]:     self.callable = self.load()
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266349]:   File "/usr/lib/python3/dist-packages/gunicorn/app/wsgiapp.py", line 49, in load
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266349]:     return self.load_wsgiapp()
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266349]:   File "/usr/lib/python3/dist-packages/gunicorn/app/wsgiapp.py", line 39, in load_wsgiapp
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266349]:     return util.import_app(self.app_uri)
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266349]:   File "/usr/lib/python3/dist-packages/gunicorn/util.py", line 383, in import_app
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266349]:     mod = importlib.import_module(module)
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266349]:   File "/usr/lib/python3.10/importlib/__init__.py", line 126, in import_module
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266349]:     return _bootstrap._gcd_import(name[level:], package, level)
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266349]:   File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266349]:   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266349]:   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266349]:   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266349]:   File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266349]:   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266349]:   File "/home/ouafi/Crafitori/backend/backend/wsgi.py", line 12, in <module>
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266349]:     from django.core.wsgi import get_wsgi_application
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266349]: ModuleNotFoundError: No module named 'django'
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266349]: [2025-02-08 21:44:43 +0000] [266349] [INFO] Worker exiting (pid: 266349)
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266340]: [2025-02-08 21:44:43 +0000] [266340] [INFO] Shutting down: Master
+Feb 08 21:44:43 instance-20250207-215308 gunicorn[266340]: [2025-02-08 21:44:43 +0000] [266340] [INFO] Reason: Worker failed to boot.
+Feb 08 21:44:43 instance-20250207-215308 systemd[1]: [0;1;39m[0;1;31m[0;1;39mcrafitori.service: Main process exited, code=exited, status=3/NOTIMPLEMENTED[0m
+Feb 08 21:44:43 instance-20250207-215308 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185mcrafitori.service: Failed with result 'exit-code'.[0m
+Feb 08 21:44:43 instance-20250207-215308 systemd[1]: crafitori.service: Scheduled restart job, restart counter is at 5.
+Feb 08 21:44:43 instance-20250207-215308 systemd[1]: Stopped Crafitori Django App.
+Feb 08 21:44:43 instance-20250207-215308 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185mcrafitori.service: Start request repeated too quickly.[0m
+Feb 08 21:44:43 instance-20250207-215308 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185mcrafitori.service: Failed with result 'exit-code'.[0m
+Feb 08 21:44:43 instance-20250207-215308 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start Crafitori Django App.[0m
+Feb 08 22:36:18 instance-20250207-215308 systemd[1]: Started Crafitori Django App.
+Feb 08 22:36:18 instance-20250207-215308 gunicorn[280344]: [2025-02-08 22:36:18 +0000] [280344] [INFO] Starting gunicorn 23.0.0
+Feb 08 22:36:18 instance-20250207-215308 gunicorn[280344]: [2025-02-08 22:36:18 +0000] [280344] [INFO] Listening at: http://127.0.0.1:8000 (280344)
+Feb 08 22:36:18 instance-20250207-215308 gunicorn[280344]: [2025-02-08 22:36:18 +0000] [280344] [INFO] Using worker: sync
+Feb 08 22:36:18 instance-20250207-215308 gunicorn[280346]: [2025-02-08 22:36:18 +0000] [280346] [INFO] Booting worker with pid: 280346
+Feb 08 22:36:18 instance-20250207-215308 gunicorn[280347]: [2025-02-08 22:36:18 +0000] [280347] [INFO] Booting worker with pid: 280347
+Feb 08 22:36:18 instance-20250207-215308 gunicorn[280348]: [2025-02-08 22:36:18 +0000] [280348] [INFO] Booting worker with pid: 280348
