@@ -6,3 +6,4 @@ python-decouple
 pillow
 gunicorn
 requests
+cryptography
