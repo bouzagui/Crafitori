@@ -57,6 +57,8 @@ Crafitori is an online marketplace designed for buying and selling handmade, hig
    ```
 2. Install dependencies:
    ```bash
+   python3 -m venv myenv
+   source myenv/bin/activate
    pip install -r requirements.txt
    ```
 3. Set up environment variables:
