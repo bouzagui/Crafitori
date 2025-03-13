@@ -9,7 +9,7 @@ import Footer from '../components/footer/Footer.js'
 const HomePage = () => {
   return (  
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <HeroOne />
       <HeroTwo />
       <CategorySlide />

@@ -13,8 +13,6 @@ import CreateProduct from './components/products/CreateProduct';
 import CartPage from './components/cart/CartPage';
 import { CartProvider } from './context/CartContext';
 import PaymentPage from './pages/PaymentPage';
-<<<<<<< HEAD
-=======
 import SellerDashboard from './components/dashboard/SellerDashboard';
 import TestCreateProduct from './components/products/CreateProduct';
 

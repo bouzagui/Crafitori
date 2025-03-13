@@ -1,27 +1,9 @@
-<<<<<<< HEAD
-import React from 'react';
-import { useLocation } from 'react-router-dom';
-import PaymentForm from '../components/payment/PaymentForm';
-=======
 import React, { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
->>>>>>> 37d074c8dd3e05c499535927240d1e9e16302484
 import Navbar from '../components/navBar/Navbar';
 
 const PaymentPage = () => {
   const location = useLocation();
-<<<<<<< HEAD
-  const totalAmount = location.state?.totalAmount || 0;  // Retrieve the total amount from the cart
-
-  return (
-    <div>
-        <Navbar />
-        <div className="container mx-auto">
-          <h1 className="text-4xl text-center my-8">Complete Your Payment</h1>
-          <p className="text-xl text-center">Total Amount: ${totalAmount.toFixed(2)}</p>
-          <PaymentForm totalAmount={totalAmount} />
-        </div>
-=======
   const totalAmount = location.state?.totalAmount || 0;
   const paypalContainerRef = useRef(null);
   const [isScriptLoaded, setIsScriptLoaded] = useState(false);
@@ -116,7 +98,6 @@ const PaymentPage = () => {
         </p>
         <div id="paypal-button-container" ref={paypalContainerRef} className="w-full mt-4"></div>
       </div>
->>>>>>> 37d074c8dd3e05c499535927240d1e9e16302484
     </div>
   );
 };
